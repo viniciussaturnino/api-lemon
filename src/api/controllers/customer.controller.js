@@ -4,7 +4,7 @@ const { validate } = require("../services/customer.service");
 const { schemaErrors } = require("../errors/api.errors")
 
 
-exports.validate = async (request, response, next) => {
+exports.validate = async (request, response, _next) => {
   const {
     numeroDoDocumento: documentNumber,
     tipoDeConexao: conectionType,

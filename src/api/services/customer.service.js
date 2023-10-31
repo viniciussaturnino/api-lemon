@@ -1,6 +1,6 @@
-const { validConsumptionClasses, validFeeModality, validMinCustomerConsumption } = require("../schemas/validation")
-const { getEconomyBasedOnHistory: getCostBasedOnHistory } = require("./energy.service");
-const { customerErrors } = require("../errors/api.errors")
+const { validConsumptionClasses, validFeeModality, validMinCustomerConsumption } = require("../schemas/validation");
+const { getEconomyBasedOnHistory } = require("./energy.service");
+const { customerErrors } = require("../errors/api.errors");
 
 
 function _validateConsumptionClass(consumptionClass) {
@@ -30,7 +30,7 @@ exports.validate = (
   feeModality,
   consumptionHistory
   ) => {
-  const { average, CO2Economy } = getCostBasedOnHistory(consumptionHistory);
+  const { average, CO2Economy } = getEconomyBasedOnHistory(consumptionHistory);
 
   const errors = [
     _validateConsumptionClass(consumptionClass),

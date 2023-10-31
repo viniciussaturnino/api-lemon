@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "node --watch --no-warnings ./src/app.js"
+    "dev": "node --watch --no-warnings ./src/app.js",
+    "test": "jest",
+    "cov": "jest --coverage"
   },
   "author": "",
   "license": "MIT",
@@ -17,6 +19,7 @@
     "nodemon": "^3.0.1"
   },
   "devDependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "jest": "^29.7.0"
   }
 }

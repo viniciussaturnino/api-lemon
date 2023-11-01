@@ -1,6 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 
-// import .env variables
 require('dotenv').config({
   path: path.join(__dirname, '../../.env'),
   example: path.join(__dirname, '../../.env.example'),
@@ -17,5 +17,5 @@ module.exports = {
     },
     KWh: process.env.KWH || 1000,
     CO2Emission: process.env.CO2_EMISSION || 84,
-  }
+  },
 };

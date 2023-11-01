@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const { validate } = require('./customer.service');
 const validation = require('../schemas/validation');
 const { customerErrors } = require('../errors/api.errors');
@@ -24,7 +25,7 @@ describe('validate', () => {
       7859,
       4160,
       6941,
-      4597
+      4597,
     ];
 
     const result = validate(conectionType, consumptionClass, feeModality, consumptionHistory);

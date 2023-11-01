@@ -1,4 +1,4 @@
-const { customerRules } = require("../../config/vars");
+const { customerRules } = require('../../config/vars');
 
 exports.getEconomyBasedOnHistory = (consumptionHistory) => {
   const validMonths = consumptionHistory.slice(0, 12);

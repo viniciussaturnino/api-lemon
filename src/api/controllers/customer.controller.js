@@ -1,8 +1,7 @@
-const { cpf, cnpj } = require("cpf-cnpj-validator")
+const { cpf, cnpj } = require('cpf-cnpj-validator');
 
-const { validate } = require("../services/customer.service");
-const { schemaErrors } = require("../errors/api.errors")
-
+const { validate } = require('../services/customer.service');
+const { schemaErrors } = require('../errors/api.errors');
 
 exports.validate = async (request, response, _next) => {
   const {
@@ -17,8 +16,8 @@ exports.validate = async (request, response, _next) => {
     return response.status(400).json({
       elegivel: false,
       razoesDeInelegibilidade: [
-        schemaErrors.INVALID_CPF
-      ]
+        schemaErrors.INVALID_CPF,
+      ],
     });
   }
 
@@ -26,8 +25,8 @@ exports.validate = async (request, response, _next) => {
     return response.status(400).json({
       elegivel: false,
       razoesDeInelegibilidade: [
-        schemaErrors.INVALID_CNPJ
-      ]
+        schemaErrors.INVALID_CNPJ,
+      ],
     });
   }
 
@@ -35,7 +34,7 @@ exports.validate = async (request, response, _next) => {
     conectionType,
     consumptionClass,
     feeModality,
-    consumptionHistory
+    consumptionHistory,
   );
 
   const responseStatus = (responseBody.elegivel === true) ? 200 : 400;

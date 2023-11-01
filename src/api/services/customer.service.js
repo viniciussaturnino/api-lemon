@@ -1,46 +1,45 @@
-const { validConsumptionClasses, validFeeModality, validMinCustomerConsumption } = require("../schemas/validation");
-const { getEconomyBasedOnHistory } = require("./energy.service");
-const { customerErrors } = require("../errors/api.errors");
+const { validConsumptionClasses, validFeeModality, validMinCustomerConsumption } = require('../schemas/validation');
+const { getEconomyBasedOnHistory } = require('./energy.service');
+const { customerErrors } = require('../errors/api.errors');
 
-
-function _validateConsumptionClass(consumptionClass) {
+function validateConsumptionClass(consumptionClass) {
   if (!validConsumptionClasses.includes(consumptionClass)) {
     return customerErrors.INVALID_CLASS;
   }
-  return;
+  return null;
 }
 
-function _validateFeeModality(feeModality) {
+function validateFeeModality(feeModality) {
   if (!validFeeModality.includes(feeModality)) {
     return customerErrors.INVALID_FEE_MODALITY;
   }
-  return;
+  return null;
 }
 
-function _validateMinConsumption(average, conectionType) {
+function validateMinConsumption(average, conectionType) {
   if (average < validMinCustomerConsumption[conectionType]) {
     return customerErrors.LOW_CONSUMPTION;
   }
-  return;
+  return null;
 }
 
 exports.validate = (
   conectionType,
   consumptionClass,
   feeModality,
-  consumptionHistory
-  ) => {
+  consumptionHistory,
+) => {
   const { average, CO2Economy } = getEconomyBasedOnHistory(consumptionHistory);
 
   const errors = [
-    _validateConsumptionClass(consumptionClass),
-    _validateFeeModality(feeModality),
-    _validateMinConsumption(average, conectionType),
+    validateConsumptionClass(consumptionClass),
+    validateFeeModality(feeModality),
+    validateMinConsumption(average, conectionType),
   ].map((error) => error).filter((error) => error);
 
-  const isValid = (errors.length === 0) ? true : false;
+  const isValid = (errors.length === 0);
   const responseBody = {
-    elegivel: isValid
+    elegivel: isValid,
   };
 
   if (isValid) {
@@ -50,4 +49,4 @@ exports.validate = (
   }
 
   return responseBody;
-}
+};

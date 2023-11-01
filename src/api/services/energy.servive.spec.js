@@ -1,7 +1,7 @@
+/* eslint-disable no-undef */
 const assert = require('assert');
 const { getEconomyBasedOnHistory } = require('./energy.service');
-const { customerRules } = require("../../config/vars");
-
+const { customerRules } = require('../../config/vars');
 
 describe('getEconomyBasedOnHistory', () => {
   it('Should calculate the average correctly', () => {

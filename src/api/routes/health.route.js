@@ -1,18 +1,18 @@
-const express = require("express");
+const express = require('express');
 
 const router = express.Router();
 
-router.get("/health-check", async (_request, response, _next) => {
+router.get('/health-check', async (_request, response, _next) => {
   const healthcheck = {
     uptime: process.uptime(),
     message: 'OK',
-    timestamp: Date.now()
+    timestamp: Date.now(),
   };
   try {
-      response.status(200).send(healthcheck);
+    response.status(200).send(healthcheck);
   } catch (error) {
-      healthcheck.message = error;
-      response.status(503).send();
+    healthcheck.message = error;
+    response.status(503).send();
   }
 });
 

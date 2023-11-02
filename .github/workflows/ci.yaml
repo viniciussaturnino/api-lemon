@@ -1,6 +1,8 @@
 name: api-ci
 
 on:
+  workflow_call:
+  workflow_dispatch:
   push:
     branches: [main, develop]
   pull_request:

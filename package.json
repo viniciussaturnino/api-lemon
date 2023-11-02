@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "node --watch --no-warnings ./src/app.js",
     "test": "jest",
-    "cov": "jest --coverage"
+    "cov": "jest --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "author": "",
   "license": "MIT",

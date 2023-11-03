@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const express = require('express');
 const bodyParser = require('body-parser');
-const { ValidationError } = require('express-validation');
+const { errorHandler } = require('../api/errors/error.handler');
 
 const routes = require('../api/routes');
 
@@ -12,11 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(routes);
 
-app.use((error, _request, response, _next) => {
-  if (error instanceof ValidationError) {
-    return response.status(error.statusCode).json(error);
-  }
-  return response.status(500).json(error);
-});
+app.use(errorHandler);
 
 module.exports = app;
